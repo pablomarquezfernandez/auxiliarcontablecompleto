@@ -13,14 +13,14 @@ spec:
    - host: marshando.dynaco.co
      http:
        paths:
-       - path: /api/auxiliarcontable
+       - path: /api/auxiliar-contable
          pathType: Prefix
          backend:
            service:
              name: auxiliarcontable
              port:
                number: 8080
-       - path: /controllers/auxiliarcontable
+       - path: /controllers/auxiliar-contable
          pathType: Prefix
          backend:
            service:
