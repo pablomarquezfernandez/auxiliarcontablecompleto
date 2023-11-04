@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auxiliarcontable
+  namespace: marshando-backend
+spec:
+  selector:
+    matchLabels:
+      app: auxiliarcontable
+  replicas: 2
+  template:
+    metadata:
+      labels:
+         app: auxiliarcontable
+    spec:
+      imagePullSecrets:
+         - name: github-secret
+      containers:
+         - name: auxiliarcontable
+           image: localhost:5000/api-auxiliarcontable 
+           ports:
+              - containerPort: 8080
+           env:
+              - name: db_host
+                value: app.inphotech.co
+              - name: db_basedatos_auxiliarcontable
+                value: MarshandoAuxiliarcontable
+              - name: db_usuario
+                value: marshando
+              - name: db_contrasena
+                value: Dyn123*
+              - name: autorizacion_urlAutorizacion
+                value: https://app.inphotech.co/api/autorizacion/autorizacion
+              - name: autorizacion_urlAutorizacionBase
+                value: https://app.inphotech.co/api/autorizacion
+              - name: autorizacion_urlAutorizacionUsuario
+                value: https://app.inphotech.co/api/autorizacion/autenticar
+              - name: autorizacion_urlAutorizacionAplicacion
+                value: https://app.inphotech.co/api/autorizacion/autenticar-aplicacion
+              - name: archivos_url
+                value: https://archivos.marshando.com/api/archivos
+              - name: archivos_token
+                value: YQV74HD8XN8T-61f5c7bbb668f7d6a520d5b330ad6f23deaee35b65cdbd02286ba594324b6adbfad2c7719cd88ed4817dd61200cf041a
+              - name: autorizacion_codigo_auxiliarcontable
+                value: fa31ed503590f2545172f4c3d0a0a7492cf09911
+              - name: datos_url
+                value: https://apimigracion.marshando.com/api/datos
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auxiliarcontable
+  namespace: marshando-backend
+spec:
+#  type: NodePort
+  selector:
+    app: auxiliarcontable
+  ports:
+    - protocol: TCP
+      port: 8080
+#      nodePort: 30001
+      targetPort: 8080

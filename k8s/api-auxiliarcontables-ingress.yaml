@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+   name: auxiliarcontable
+   namespace: marshando-backend
+spec:
+   ingressClassName: public
+   tls:
+       - hosts:
+          - marshando.dynaco.co
+         secretName: marshando.dynaco.co
+   rules:
+   - host: marshando.dynaco.co
+     http:
+       paths:
+       - path: /api/auxiliarcontable
+         pathType: Prefix
+         backend:
+           service:
+             name: auxiliarcontable
+             port:
+               number: 8080
+       - path: /controllers/auxiliarcontable
+         pathType: Prefix
+         backend:
+           service:
+             name: auxiliarcontable
+             port:
+               number: 8080
