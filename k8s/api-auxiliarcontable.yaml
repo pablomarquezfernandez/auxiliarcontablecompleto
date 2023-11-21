@@ -22,29 +22,135 @@ spec:
               - containerPort: 8080
            env:
               - name: db_host
-                value: app.inphotech.co
-              - name: db_basedatos_auxiliarcontable
-                value: MarshandoAuxiliarcontable
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: db_host
               - name: db_usuario
-                value: marshando
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: db_usuario
               - name: db_contrasena
-                value: Dyn123*
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: db_contrasena
+              - name: db_basedatos_auxiliar_contable
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: db_basedatos_auxiliar_contable
               - name: autorizacion_urlAutorizacion
-                value: https://app.inphotech.co/api/autorizacion/autorizacion
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: autorizacion_urlAutorizacion
               - name: autorizacion_urlAutorizacionBase
-                value: https://app.inphotech.co/api/autorizacion
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: autorizacion_urlAutorizacionBase
               - name: autorizacion_urlAutorizacionUsuario
-                value: https://app.inphotech.co/api/autorizacion/autenticar
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: autorizacion_urlAutorizacionUsuario
               - name: autorizacion_urlAutorizacionAplicacion
-                value: https://app.inphotech.co/api/autorizacion/autenticar-aplicacion
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: autorizacion_urlAutorizacionAplicacion
               - name: archivos_url
-                value: https://archivos.marshando.com/api/archivos
-              - name: archivos_token
-                value: YQV74HD8XN8T-61f5c7bbb668f7d6a520d5b330ad6f23deaee35b65cdbd02286ba594324b6adbfad2c7719cd88ed4817dd61200cf041a
-              - name: autorizacion_codigo_auxiliarcontable
-                value: fa31ed503590f2545172f4c3d0a0a7492cf09911
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: archivos_url
               - name: datos_url
-                value: https://apimigracion.marshando.com/api/datos
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: datos_url
+              - name: autorizacion_codigo_auxiliar_contable
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: autorizacion_codigo_auxiliar_contable
+              - name: casos_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: casos_url
+              - name: contabilidad_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: contabilidad_url
+              - name: facturas_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: facturas_url
+              - name: gastos_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: gastos_url
+              - name: ingresoNoOperacional_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: ingresoNoOperacional_url
+              - name: nomina_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: nomina_url
+              - name: sucursales_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: sucursales_url
+              - name: terceros_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: terceros_url
+              - name: cajaCuentaBancos_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: cajaCuentaBancos_url
+              - name: impuestos_url
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: impuestos_url
+              - name: usuarioBaseDatosPrincipal_mongodb
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: usuarioBaseDatosPrincipal_mongodb
+              - name: contrasenaBaseDatosPrincipal_mongodb
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: contrasenaBaseDatosPrincipal_mongodb
+              - name: hostBaseDatosPrincipal_mongodb
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: hostBaseDatosPrincipal_mongodb
+              - name: puerto_mongodb
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: puerto_mongodb
+              - name: baseDatosPrincipal_mongodb
+                valueFrom:
+                  configMapKeyRef:
+                    name:  variables-entorno
+                    key: baseDatosPrincipal_mongodb
 ---
 apiVersion: v1
 kind: Service

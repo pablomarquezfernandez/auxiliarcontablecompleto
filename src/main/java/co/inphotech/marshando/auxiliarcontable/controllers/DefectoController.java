@@ -24,7 +24,6 @@ public class DefectoController {
 		JSONObject jdato = new JSONObject();
 		jdato.put("AuxiliarContable", "AuxiliarContable");
 		
-		
 		return  new ResponseEntity<String>( jdato.toString(), responseHeaders, HttpStatus.OK );
 	}
 }
